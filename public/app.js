@@ -5,8 +5,6 @@ var playerOne = document.getElementById('playerOne');
 var playerTwo = document.getElementById('playerTwo');
 var main = document.getElementById('main');
 var form = document.getElementById('form');
-
-
 function startGame() {
     if (firstPlayer.value.length < 3 && secondPlayer.value.length < 3) {
         alert('Name must contain atleast three characters.')
@@ -31,26 +29,23 @@ var block9 = document.getElementById('block9');
 var result = document.getElementById('result');
 var count = 0;
 var timer = 0;
-
 for (var i = 0; i < box.length; i++) {
     box[i].setAttribute('onclick', 'setValue(this)');
 }
-
-
 function setValue(val) {
     for (var a = 0; a < box.length; a++) {
         if (count % 2 == 0) {
             val.innerText = 'o';
+            val.removeAttribute('onclick');
         } else {
             val.innerText = 'x';
+            val.removeAttribute('onclick');
         }
     }
     count++;
     timer++;
     getWinner();
-    
 }
-
 /// reset game ///
 function resetGame() {
     for (var b = 0; b < box.length; b++) {
@@ -61,7 +56,6 @@ function resetGame() {
     }
     result.innerHTML = "";
 }
-
 function getWinner() {
     if (block1.innerText == 'o' && block2.innerText == 'o' && block3.innerText == 'o'
         || block4.innerText == 'o' && block5.innerText == 'o' && block6.innerText == 'o'
